@@ -1,0 +1,57 @@
+
+# section information
+section:
+  name: Experiences
+  id: experiences
+  enable: true
+  weight: 3
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true 
+
+# Your experiences
+experiences:
+- company:
+    name: Groupe Tanger Med(Cires Technologies).
+    url: "https://www.tangermed.ma/cires-technologies/"
+    location: Tanger
+    # company overview
+    overview: Cires Technologies carries out projects with a strong technological dimension of video surveillance and port and airport security, urban video surveillance, network management and complex sites in terms of connectivity.
+  positions:
+  - designation: SOC Analyst
+    start: Feb 2022
+    # don't provide end date if you are currently working there. It will be replaced by "Present"
+    # end: Dec 2020
+    # give some points about what was your responsibilities at the company.
+    responsibilities:
+    - Integration of a Security Incident Response Platform (TheHive) using webhooks and context substitution.
+    - Deploy SIEM on a docker environment using docker-compose features and process automation with bash scripts.
+    - Build and implement views for server performance monitoring using painless scripting language. 
+    - Development of Powershell scripts to automate the process of installing an agent on several Windows platforms.
+    - Storage management using ILM, and MINIO S3 buckets as backup and restore mechanisms. 
+    - Creation of rules for the detection of different business use cases.
+    - Development of parsers for various infrastructure equipment (Firewalls, DNS, WAFs , Wallix). 
+    - Creation of Dashboards and Canvas report to analyze the various information required (KPI).  
+
+  - designation: SOC Analyst intern
+    start: Oct 2021
+    end: Feb 2022
+    responsibilities:
+    - Configuration of logstash (pipelines), elasticsearch (indexing ,xpack ) and kibana (Fleet server ,SSL/TLS,Elastic agents ). 
+    - Configuration of agents for Linux,windows and apache (filebeat ,winlogbeat (sysmon) ,Metricbeat ,packetbeat and elastic security integration). 
+    - Conversion of rules from different sources (splunk, sigma..) into Kibana queries.
+
+- company:
+    name: HENCEFORTH
+    url: "https://www.henceforth.ma"
+    location: Rabat
+    overview: HENCEFORTH operates in the digital field in general and in the fields of Cybersecurity and Big Data in particular .
+  positions:
+  - designation: Cybersecurity consultant trainee
+    start: Jul 2020
+    end: Sep 2021
+    responsibilities :
+    - Design and development of an information gathering tool using bash scripting .
+    - Integration of OSINT tools in the vulnerability analysis workflow .
+    - Web application pentests .
+

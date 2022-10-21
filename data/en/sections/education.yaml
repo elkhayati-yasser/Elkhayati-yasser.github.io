@@ -1,0 +1,82 @@
+# section information
+section:
+  name: Education
+  id: education
+  template: sections/education.html # Use "sections/education-alt.html for alternate template.
+  enable: true
+  weight: 4
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+degrees:
+#- name: Ph.D in Quantum Cryptography
+#  icon: fa-microscope
+#  timeframe: 2016-2020
+#  institution:
+#    name: ABC University of Technology
+#    url: "#"
+#  grade: #(optional)
+#    scale: CGPA
+#    achieved: 3.6
+#    outOf: 4
+#  publications: #(optional)
+#  - title: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+#    url: "#"
+#  - title: Fusce eu augue ut odio porttitor pulvinar.
+#    url: "#"
+#  - title: Nullam vitae orci tincidunt purus viverra pulvinar.
+#    url: "#"
+- name: Cybersecurity and Digital Trust engineer
+  icon: fa-graduation-cap
+  timeframe: 2018-2021
+  institution:
+    name: National Institute of Posts and Telecommunications
+    url: "http://www.inpt.ac.ma/"
+  grade: #
+  takenCourses: #(optional)
+    # if true, the courses will be rendered as a table otherwise it will render as a list and the grades will be hidden.
+    showGrades: false
+    collapseAfter: #
+    courses:
+    - name: Operating system security (Windows, UNIX) 
+    - name: Information systems & Network security 
+    - name: Security architecture (probes, IDS/IPS, firewalls) 
+    - name: Access and identity management
+    - name: Security auditing 
+    - name: Risk analysis
+    - name: Elaboration of policies and procedures of information security
+      #achieved: 3.75
+      #outOf: 4
+#  publications: #(optional)
+#  - title: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+#    url: "#"
+#  - title: Fusce eu augue ut odio porttitor pulvinar.
+#    url: "#"
+#  extracurricularActivities: #(optional)
+#  - In vitae facilisis est, eget porta sem.
+#  - Vestibulum consectetur lorem justo, at laoreet lorem feugiat et.
+#  - Duis sed massa feugiat, ornare justo et, aliquam est.
+#  - Pellentesque ut fringilla magna.
+- name: Technologies and Industrial Sciences Preparatory classes
+  icon: fa-university
+  timeframe: 2016-2018
+  institution:
+    name: CPGE Med Reda Slaoui
+    url: "https://www.cpge.ac.ma"
+  grade: #
+  takenCourses: #(optional)
+    # if true, the courses will be rendered as a table otherwise it will render as a list and the grades will be hidde>
+    showGrades: false
+    collapseAfter: 2
+    courses:
+    - name: Mathematics
+    - name: Physics and Chemistry
+    - name: Informatique 
+    - name: Industrial science   
+
+#  extracurricularActivities: #(optional)
+#  - In vitae facilisis est, eget porta sem.
+#  - Vestibulum consectetur lorem justo, at laoreet lorem feugiat et.
+#  - Duis sed massa feugiat, ornare justo et, aliquam est.
+#  - Pellentesque ut fringilla magna.

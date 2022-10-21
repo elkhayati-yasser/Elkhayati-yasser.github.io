@@ -1,0 +1,18 @@
+# some information about you
+name: "ELKHAYATI Yasser"
+nickname: "Yasser"
+# greeting message before your name. it will default to "Hi! I am" if not provided
+greeting: "Hi, I am"
+image: "images/author/john.png"
+# give your some contact information. they will be used in the footer
+contactInfo:
+  email: "yasserelkhayati28@gmail.com"
+  phone: "+2126 60 79 90 76"
+  github: The-snowpiercer
+  linkedin: yasserelkhayati
+
+# some summary about what you do
+summary:
+  - I am a IT enthusiastic
+  - Currently Cybersecurity researcher
+  - I work on open-source SIEM products using the DEVOPS culture

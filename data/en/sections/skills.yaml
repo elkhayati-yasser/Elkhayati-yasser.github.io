@@ -1,0 +1,42 @@
+# section information
+section:
+  name: Key Skills
+  id: skills
+  enable: true
+  weight: 2
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your Skills.
+# Give a summary of you each skill in the summary section.
+skills:
+
+- name: Networking
+  logo: /images/sections/skills/network.png
+  summary: "Worked on network topologies and configurations,TCP/IP,routers,hubs and switches ."
+
+- name: Elasticsearch
+  logo: /images/sections/skills/elasticsearch.png
+  summary: "Experience in handling Distributed set of engine setup,Storage Management and escalation/upgrade management ."
+  url: "https://www.elastic.co/what-is/elk-stack"
+
+- name: Kibana
+  logo: /images/sections/skills/kibana.png
+  summary: "Strong understanding and hands on experience working with Kibana .Ability to build customized dashboards and translate key performance indicators into data visualization."
+
+- name: Logstash
+  logo: /images/sections/skills/logstash.png
+  summary: "Capable to collect and aggregate data from multiple sources."
+
+- name: Linux 
+  logo: /images/sections/skills/linux.png
+  summary: "Using as the primary operating system. Capable of writing bash/shell scripts."
+
+- name: Python
+  logo: /images/sections/skills/python.png
+  summary: "Used for programming and problem solving."
+
+- name: Log Analysis and Investigation
+  logo: /images/sections/skills/logs.png
+  summary: "Collection and analysis of logs from different channels."	
