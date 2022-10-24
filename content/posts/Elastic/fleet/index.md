@@ -16,6 +16,8 @@ hero : fleet.svg
 
 Fleet Server is required if we plan to use Fleet for central management of all agent .It supports many Elastic Agent connections and serves as a control plane for updating agent policies, collecting status information, and coordinating actions across Elastic Agents. It also provides a scalable architecture. 
 
+{{< img src="fleet.png" title="fleet Server" >}}
+
 we should be placed in the working directory :
 
 ```
@@ -34,12 +36,20 @@ We will use Fleet API , Any actions we can perform through the Fleet UI are also
 
 Please refer to the [Fleet OpenAPI](https://github.com/elastic/kibana/blob/8.4/x-pack/plugins/fleet/common/openapi/README.md) file in the Kibana repository for more details.
 
-Either you are in the same terminal context or you need to reassign the password variable. To do this, go to the .env file, gragrabe password value, and assign it to the password variable so that you can use it later.
+Either you are in the same terminal context or you need to reassign the password variable. 
+
+We will find the password in ** notes **
 
 ```
-PASSWORD=kacsTCIvBlcX4u5cTx47mpiOp
+PASSWORD=@YOURPASSWORD
+```
+
+Now we can use the API calls :
+
+```
 curl -k -u "elastic:${PASSWORD}" -s -XPOST https://localhost:5601/api/fleet/setup --header 'kbn-xsrf: true' >/dev/null 2>&1
 ```
+{{< img src="fleet1.PNG" title="fleet Server" >}}
 
 we should be placed in the working directory :
 
@@ -74,14 +84,24 @@ curl -k -u "elastic:${PASSWORD}" "https://localhost:5601/api/fleet/agent_policie
 
 Now we should wait a while for the policy to generate .
 
+
+{{< img src="fleet2.PNG" title="fleet Server" >}}
+
+
 Now we have to define the URL of the fleet, on which the agents will try to connect. 
 
 ```
 curl -k -u "elastic:${PASSWORD}" -XPUT "https://localhost:5601/api/fleet/settings" \
 --header 'kbn-xsrf: true' \
 --header 'Content-Type: application/json' \
--d '{"fleet_server_hosts":["https://localhost:8220"]}'
+-d '{"fleet_server_hosts":["https://192.168.56.102:8220"]}'
 ```
+
+In my case, the IP is **192.168.56.102** , you have to replace it with the static IP you defined before.
+
+
+{{< img src="fleet3.PNG" title="fleet Server" >}}
+
 
 Now we have to generate the service token 
 ```
@@ -92,6 +112,8 @@ Add service token to the .env file
 ```
 echo SERVICETOKEN=${SERVICETOKEN} >> .env
 ```
+
+{{< img src="fleet4.PNG" title="fleet Server" >}}
 
 ### Generate fleet-compose.yml
 ```
@@ -130,14 +152,19 @@ Now we can make the fleet appear and wait for it to finish:
 docker-compose -f fleet-compose.yml up -d
 ```
 
+Now we can check if the server is operational.
+
+{{< img src="fleet5.PNG" title="fleet Server" >}}
+
 Now go to https://@IP:5601/app/fleet/settings and click on edit hosts :
 
 Fleet server hosts : https://@IP:8220
 
 now on the output section click on edit , and change the Hosts to https://@IP:9200
 
-in the ***YAML configuration*** replace the CA with your CA:
+{{< img src="fleet7.PNG" title="fleet Server" >}}
 
+in the ***YAML configuration*** replace the CA with your es01.crt :
 ```
 ssl:
   certificate_authorities:
@@ -163,5 +190,18 @@ ssl:
     eP5YaTaHeHOY0a4O8r7dv65DOxwUlzM8hq5jsFWW
     -----END CERTIFICATE-----
 ```
+You can find it in temp folder :
+
+{{< img src="fleet ca.PNG" title="fleet Server" >}}
 
 Now you should see the fleet logs flowing. 
+
+
+{{< img src="fleet9.PNG" title="fleet Server" >}}
+
+
+Click on View Dashboard to se the agent dashboard usage :
+
+{{< img src="fleet10.PNG" title="fleet Server" >}}
+
+

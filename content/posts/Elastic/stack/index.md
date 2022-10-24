@@ -33,9 +33,10 @@ First, we will define some environment variables, so that we can use them as we 
 Our Cluster will be exposed on a **public ip address**, in our case the ethernet network interface of the linux machine. The interface can have names like eth0 , ens33
 .
 
-We can use a commmand to extract it 
+We can use a commmand to extract it:
+ 
 ```
-IP=`echo $(ip route get 1.2.3.4 | awk '{print $7}')`
+IP=`hostname -I | cut -d' ' -f1`
 ```
 It is recommended to have a static IP on your server so that your IP never expires or to ask your network administrator to allocate an IP on your DHCP server.
 
@@ -45,13 +46,13 @@ https://www.makeuseof.com/configure-static-ip-address-settings-ubuntu-22-04/
 
 ***Make sure you have the Internet on your server before you proceed.***
 
-In my case my Ubuntu Server is NATed and i have ***@IP=192.168.208.135***
+In my case my Ubuntu Server is NATed and i have ***@IP=192.168.56.102***
 
 
 We are going to generate a random password, and we will consider it as the password for Elasticsearch and Kibana :
 
 ```
-PASSWORD=`openssl rand -base64 29 | tr -d "=+/" | cut -c1-25`
+echo PASSWORD=`openssl rand -base64 29 | tr -d "=+/" | cut -c1-25` >> notes
 ```
 
 The command bellow will create a ***.env*** file , where we will store all informations related to the stack :
@@ -183,6 +184,7 @@ Back to the main working Directory :
 cd ${HOME}/elkstack
 ```
 
+And we will copy the following command into the terminal:
 
 ```
 cat > stack-compose.yml<<EOF
@@ -532,11 +534,25 @@ docker-compose -f stack-compose.yml up -d
 The ***-d*** option is used to bring up the project in a ***detachable mode** if you want to see the verbose of what happing remove it .
 
 
+The current directory should look something like this:
+{{< img src="files.PNG" title="Running Containers" >}}
+
+Now to see the containers that are running in our server:
 
 
+{{< img src="dockerps.PNG" title="Running Containers" >}}
+
+The Elastic cluster is available at **https://@IP:9200** and between the Elastic username and the password we recorded in the notes.
 
 
+{{< img src="cluster.PNG" title="ELastic cluster" >}}
 
+And we can explore kibana on **https://@IP:5601**
+
+{{< img src="kibana.PNG" title="kibana" >}}
+
+
+From this point on, our ELK stack is up and running and we can start operating it.
 
 
 

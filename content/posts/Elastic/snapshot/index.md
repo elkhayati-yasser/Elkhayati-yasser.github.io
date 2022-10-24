@@ -23,6 +23,8 @@ A snapshot is a backup of a running Elasticsearch cluster. We can use snapshots 
 
 4-  Reduce your storage costs by using searchable snapshots in the cold and frozen data tiers.
 
+{{< img src="snapo.png" title="Terminal1" >}}
+
 
 Elasticsearch supports several repository types with cloud storage options, including:
 
@@ -106,6 +108,7 @@ For each instance we will install this pulgin.
 ```
 for((i=1;i<=3;i+=1)); do docker exec es0$i bin/elasticsearch-plugin install --batch repository-s3; done 
 ```
+{{< img src="snap1.PNG" title="Terminal1" >}}
 
 The client that we use to connect to S3 has a number of settings available. The settings have the form ***s3.client.CLIENT_NAME.SETTING_NAME***
 
@@ -137,12 +140,17 @@ We have to restart everything so we will take the new settings into consideratio
 for((i=1;i<=3;i+=1)); do docker restart es0$i; done 
 ``` 
 
+{{< img src="snap2.PNG" title="Terminal1" >}}
+
 Extract the docker ip from the minio container to use it later. 
 
 ```
 IPMINIO=`docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' minio01`
 ```
- 
+
+{{< img src="snap3.PNG" title="Terminal1" >}}
+
+
 To set up the repo : 
  
 ```
@@ -158,6 +166,7 @@ To set up the repo :
   }
 }'
 ``` 
+{{< img src="snap4.PNG" title="Terminal1" >}}
 
 we can create a snapshot policy to automatically take snapshots and control how long they are retained.
 
@@ -174,6 +183,7 @@ we can create a snapshot policy to automatically take snapshots and control how 
 
 **max_count:** Keep no more than 20 successful snapshots, even if they’re less than 5 days old
 
+{{< img src="snap5.PNG" title="Terminal1" >}}
 ```
 curl -k -u elastic:${PASSWORD} -XPUT "https://localhost:9200/_slm/policy/minio-snapshot-policy" -H 'Content-Type: application/json' -d'{  "schedule": "0 */30 * * * ?",   "name": "<minio-snapshot-{now/d}>",   "repository": "minio01",   "config": {     "partial": true  },  "retention": {     "expire_after": "5d",     "min_count": 1,     "max_count": 20   }}'
 ```
@@ -184,7 +194,18 @@ To execute the policy .
 curl -k -u elastic:${PASSWORD} -XPUT "https://localhost:9200/_slm/policy/minio-snapshot-policy/_execute"
 ```
 
+{{< img src="snap6.PNG" title="Terminal1" >}}
+
 Now please visit **Stack Management > Snapshot and Restore** .
+
+{{< img src="snap7.PNG" title="Terminal1" >}}
+
+we can see that a snapshot has been taken.
 
 Or vist http://@IP:9001 to see Minio console
 
+{{< img src="minio1.PNG" title="Terminal1" >}}
+
+we can borse to see the snapshot of the index :
+
+{{< img src="minio2.PNG" title="Terminal1" >}}
