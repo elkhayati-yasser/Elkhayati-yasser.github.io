@@ -1,6 +1,6 @@
 ---
 title: "Monitor your stack "
-date: 2022-10-05T114:10:00+01:00
+date: 2022-10-05T14:10:00+01:00
 description: Monitor the performance of your SIEM-SOC
 menu:
   sidebar:
