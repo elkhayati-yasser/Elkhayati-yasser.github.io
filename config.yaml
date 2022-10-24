@@ -1,4 +1,4 @@
-baseURL: https://snow-piercer.github.io
+baseURL: https://Elkhayati-yasser.github.io
 
 languageCode: en-us
 title: "ELKHAYATI Yasser's Blog"
@@ -48,7 +48,7 @@ params:
     favicon: /images/site/favicon.png
 
   # GitHub repo of your site
-  gitRepo: https://github.com/The-snowpiercer/snow-piercer.github.io
+  gitRepo: https://github.com/The-snowpiercer/Elkhayati-yasser.github.io
   # Default branch of your Git repo
   gitBranch: main
 
