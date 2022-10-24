@@ -1,6 +1,6 @@
 ---
 title: "Centralize the shipping"
-date: 2022-10-18T08:06:25+06:00
+date: 2022-10-04T14:10:00+01:00
 description: Manage Elastic agents Remotly
 menu:
   sidebar:

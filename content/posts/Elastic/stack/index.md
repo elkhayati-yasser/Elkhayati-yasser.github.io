@@ -1,6 +1,6 @@
 ---
 title: "Elastic Stack : The Cluster"
-date: 2022-10-18T08:06:25+06:00
+date: 2022-10-03T14:10:00+01:00
 description: Elasticearch , Logsatsh, Kibana
 menu:
   sidebar:

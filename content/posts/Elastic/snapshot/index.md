@@ -1,6 +1,6 @@
 ---
 title: "Snapshot and restore"
-date: 2022-10-18T08:06:25+06:00
+date: 2022-10-06T14:10:00+01:00
 description: Snapshot and restore
 menu:
   sidebar:
