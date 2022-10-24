@@ -61,3 +61,6 @@ For changes to persist please add a linge into  ***/etc/sysctl.conf*** and realo
 echo "vm.max_map_count=262144" >> /etc/sysctl.conf && sysctl -p
 ```
 
+**sysctl -p** Load in sysctl settings from the file specified or /etc/sysctl.conf if none given:
+
+{{< img src="vmmax.png" title="Terminal1" >}}

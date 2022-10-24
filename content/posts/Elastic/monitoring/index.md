@@ -68,6 +68,8 @@ curl -s -k -u "elastic:${PASSWORD}" -XPUT "https://localhost:9200/_security/role
 }'
 ```
 
+{{< img src="metric1.PNG" title="Terminal1" >}}
+
 Assign the **monitoring role**, along with the following built-in roles, to users who need to monitor Metricbeat:
 
 
@@ -98,7 +100,7 @@ curl -s -k -u "elastic:${PASSWORD}" -XPUT "https://localhost:9200/_security/user
 
 **Note** the password is ***test12345***
 
-
+{{< img src="metric2.PNG" title="Terminal1" >}}
 
 ### Create ***the metricbeat.yml*** file 
 
@@ -169,7 +171,7 @@ metricbeat.modules:
     - stats
     - state
   period: 10s
-  hosts: ["http://metricbeat:5066", "http://filebeat:5066"]
+  hosts: ["http://metricbeat:5066"]
   xpack.enabled: true
   ssl.enabled: true
   ssl.verification_mode: full
@@ -239,5 +241,12 @@ Bring up the metricbeat container
 docker-compose -f monitor-compose.yml up -d
 ```
 
-We should wait a few ***Minutes*** to be able to visit the stack monitoring section, or we can see the Dashboard section and search for ***[Metricbeat Docker] Overview ECS***.
+We should wait a few ***Minutes*** to be able to visit the stack monitoring section.
+Or we can see the Dashboard section and search for ***[Metricbeat Docker] Overview ECS***.
 
+{{< img src="metricbeat.PNG" title="Terminal1" >}}
+
+
+Or we can see the Dashboard section and search for ***[Metricbeat Docker] Overview ECS***.
+
+{{< img src="metricbeatdash.PNG" title="Terminal1" >}}
