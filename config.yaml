@@ -48,7 +48,7 @@ params:
     favicon: /images/site/favicon.png
 
   # GitHub repo of your site
-  gitRepo: https://github.com/The-snowpiercer/Elkhayati-yasser.github.io
+  gitRepo: https://github.com/elkhayati-yasser/Elkhayati-yasser.github.io
   # Default branch of your Git repo
   gitBranch: main
 
