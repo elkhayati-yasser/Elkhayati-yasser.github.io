@@ -4,5 +4,5 @@ menu:
   sidebar:
     name: Deploy Your own SIEM-SOC
     identifier: SIEM
-    weight: 300
+    weight: 1
 ---
