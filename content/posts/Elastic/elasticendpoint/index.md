@@ -63,6 +63,7 @@ In the administrator's Powershell session, we need to go to the Sysmon folder an
 ```
 .\sysmon64.exe -accepteula -i PATH\TO\FOLDER\sysmonconfig-export.xml
 ```
+{{< img src="sysmon.JPG" title="Sysmon with swift configuration" align="center" >}}
 
 To configure the new Elastic agent on our Windows workstation and ingest the sysmon data into our SIEM, and we should have the fleet server installed and healthy.
 
@@ -78,27 +79,58 @@ In Kibana: **Management → Integrations** , Search for and select **Endpoint an
 
 We should configure the **Endpoint and Cloud Security** integration with an Integration name, and we should enter a name for the agent policy in New agent policy name(ex:WINDOWS) **→ Save and continue** .
 
+{{< img src="edr.JPG" title="EDR configuration" align="center" >}}
+
 
 ### Custom Windows Event Logs
 
-In Kibana: **Management → Integrations** , Search for and select **Custom Windows Event Logs**, then select Add Endpoint and Cloud Security. The integration configuration page appears.
+In Kibana: **Management → Integrations** , Search for and select **Custom Windows Event Logs**, then select Add integration. The integration configuration page appears.
 
-We should configure the **Custom Windows Event Logs** integration with an Integration name, and we should enter the chanel name in our case **Microsoft-Windows-Sysmon/Operational** and we will click the Existing hosts tab and select an existing policy (ex:WINDOWS) **→ Save and continue** .
+{{< img src="addinteg.JPG" title="add custom windows configuration" >}}
+We should configure the **Custom Windows Event Logs** integration with an Integration name, and we should enter the chanel name in our case **Microsoft-Windows-Sysmon/Operational** and we will click the Existing hosts tab and select an existing policy (ex:WINDOWS) → **Save and continue** 
 
+{{< img src="custom.JPG" title="sysmon channel" align="center" >}}
 
-
-### Configure and enroll the Elastic Agent 
+### Configure and enroll the Elastic Agent in Fleet
 
 Go to **Fleet → Agents → Add agent**.
 
 We should select the agent policy for the Elastic Agent that we created before **(existing policy)**.
 
 
-We should select **Windows platform** , then copy the provided commands.
+Now I need your attention, if we copy the command provided in the elastic guide, we will face a problem with certificates.
+
+{{< img src="problemcertificats.JPG" title="Windows certificat problem" align="center" >}}
+
+so we are going to visit [elastic documentation](https://www.elastic.co/guide/en/fleet/current/elastic-agent-cmd-options.html) to solve the issue .
+
+Because we use custom certificates,we have to add the root certificate and the elastic certificates.
+
+**certificate-authorities**
 
 
-On the host, open a command-line interface and navigate to the directory where you want to install Elastic Agent. Paste and run the commands from Fleet to download, extract, enroll, and start Elastic Agent. 
+**fleet-server-es-ca**
 
+{{< img src="agent installed.JPG" title="Windows certificat problem" align="center" >}}
 
+as you see the agent installed successfully.
+ 
 
-**NOTE** :  In the script assets you will find a powershell script to automate the process and a descreption of how to use it .
+**NOTE** :  In my case I use an automated [powershell script](https://github.com/elkhayati-yasser/Elastic-security/blob/main/scripts/installagent.ps1) to install sysmon and elastic agent.
+
+### Malware detection
+   
+To test our detection and response system, I will use [PS2EXE](https://github.com/MScholtes/PS2EXE) to turn a malicious powershell script into an executable to send to my victims.
+
+Once I have dropped the executable, an alert appears on my screen.
+
+{{< img src="malwarepreven.JPG" title="Malware prevention alert" align="center" >}}
+
+Once we log in to our Siem, we will see an alert and we can start the investigation.
+
+{{< img src="preven.JPG" title="Malware prevention dashboard" align="center" >}}
+
+If you click on the alert, you can see what process caused the alert, what changes have occurred on my host, which gives me a clear overview of what the malware has done to my computer.
+
+{{< img src="invistigateqq.JPG" title="Malware invetigation" align="center" >}}
+
