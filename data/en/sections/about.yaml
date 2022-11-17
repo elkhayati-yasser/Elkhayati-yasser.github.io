@@ -8,7 +8,7 @@ section:
   template: sections/about.html
 
 # your designation
-designation: SOC Analyst
+designation: System Engineer
 # your company information
 company:
   name: TangerMed Port (Cires Technologies) .
@@ -19,7 +19,7 @@ company:
 # resume: "files/resume.pdf"
 
 # a summary about you
-summary: 'I am a passionate Cybersecurity engineer. I present myself as an autonomous team player, with good personal skills and ready to contribute and collaborate to the success of challenging projects .'
+summary: 'I am a passionate Cybersecurity and System Engineer . I present myself as an autonomous team player, with good personal skills and ready to contribute and collaborate to the success of challenging projects .'
 
 # your social links
 # give as many as you want. use font-awesome for the icons.
